@@ -1,0 +1,19 @@
+# KiCad project placeholder: STM-HDX-Reader
+# This is a minimal placeholder .kicad_pro file to track the KiCad project in the repository.
+# The real KiCad project files (schematic, PCB, footprints, library links) will be created and committed
+# in subsequent updates to this branch.
+
+kicad_pro_version=20211014
+
+[general]
+project_file_format=4
+
+[pcbnew]
+# PCB file will be: kicad/STM-HDX-Reader.kicad_pcb
+
+[schematic]
+# Schematic files will be in kicad/schematic/
+
+[files]
+# generated files listing placeholder
+
