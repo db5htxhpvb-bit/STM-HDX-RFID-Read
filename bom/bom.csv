@@ -1,0 +1,19 @@
+ref,qty,value,footprint,description,manufacturer,supplier_part,link
+U1,1,STM32F103C8T6,LQFP48,Main MCU,ST,STM32F103C8T6,https://www.st.com/en/microcontrollers-microprocessors/stm32f103c8.html
+U2,1,TPS61088,SOT23-6,Sync boost converter (3.3->12V),TI,TPS61088,https://www.ti.com/product/TPS61088
+L1,1,10uH,1210,Boost inductor,Coiltronics,,
+FB1,1,,0805,Power ferrite bead,,,
+Q1..Q4,4,30V MOSFET,SO-8,Power MOSFET (H-bridge),Vishay,SiA446DJ,https://www.vishay.com/
+U3,2,IR2104,SOIC-8,High-side/Low-side gate driver,Infineon,IR2104,https://www.infineon.com/
+Rshunt,1,0.05 R,2512,Current sense resistor,Vishay,WSR2512,https://www.vishay.com/
+D1,2,BAT54,SOT-23,Schottky diode for envelope,BAT54,,
+U4,1,LMV358,SO-8,Op-amp dual,TI,LMV358,https://www.ti.com/product/LMV358
+U5,1,LMV7231,SOT-23-5,Comparator,TI,LMV7231,https://www.ti.com/product/LMV7231
+C_tune,1,10nF,0805,Resonance capacitor,MuRata,,
+C_trim,1,2-30pF,Trimmer,Trimmer cap for fine tune,,,
+J1,1,JST-2pin,PH-2,Coil connector,JST,PH2-2P,https://www.jst-mfg.com/
+J_SW,1,6-pin,2x3,SWD header,Samtec,,
+J_UART,1,4-pin,Header,UART debug header,,,
+F1,1,PTC,1206,Resettable fuse,PolySwitch,,
+TVS1,1,SMBJ12CA,SMAJ,TVS diode at coil node,,,
+
