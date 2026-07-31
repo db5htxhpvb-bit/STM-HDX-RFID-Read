@@ -1,0 +1,24 @@
+ref,qty,description,value,footprint,notes_priority
+U1,1,STM32F103C8T6,STM32F103C8T6,LQFP48,MCU - LCSC preferred
+U2,1,Synchronous Boost Converter (3.3->12V),TPS61088 or equivalent,SOT23-6,Target output 12V >=3A - choose LCSC stocked part
+L_BOOST,1,Power Inductor,10uH,1210,Low DCR, high current (LCSC search by inductance/current)
+C_BOOST,2,Output Capacitor,22uF,1210,Low-ESR ceramic for VBOOST
+Q1..Q4,4,Power MOSFET,>=40V,PowerSO-8 or LFPAK,Low Rds(on) <20mOhm; LCSC primary candidates will be listed
+U_DRV_A,2,Half-bridge Gate Driver,Half-bridge driver,SOIC-8 or SOT-23-6,Driver with bootstrap or high-side support (LCSC candidate)
+R_SHUNT,1,Current Sense Resistor,0.05R,2512,Power resistor 3-5W, Kelvin pads; LCSC preferred
+U_SENSE,1,Differential Amp / OpAmp,INAxxx or op-amp,SOP-8,ADC front-end for shunt monitoring
+TVS_COIL,1,TVS Diode at coil node,SMBJ12CA,SMA,Transient protection for coil node
+D_ENV,2,Schottky Diode,BAT54,SOT-23,Envelope detector diodes
+U_RX_OP,1,Low-noise OpAmp,LMV358 or OPA2333,SOIC-8,Receive preamp (3.3V operation)
+U_COMP,1,Comparator,LMV7231,SOT-23-5,Comparator for envelope detection
+C_TUNE,1,Resonance Capacitor,10nF,0805,NP0/C0G recommended
+C_TRIM,1,Trimmer Capacitor,2-30pF,Trimmer,Parallel for fine tune
+J_COIL,1,JST 2-pin Connector,PH-2,JST-PH,Coil connector - JST PH series (LCSC PN: search PH2-?)
+J_SWD,1,SWD Header,6-pin,2x3 Header,SWD programming header
+J_UART,1,UART Header,4-pin,Header,UART debug header
+F1,1,Resettable Fuse,PTC,1206,Protect VBOOST output
+R_GATE,4,Gate Resistor,10R,0805,Gate resistor for MOSFETs
+R_PULL,4,Pull-down Resistor,100k,0805,Gate pulldown
+LED1,1,Status LED,Green,LED-0805,Indicator for power/status
+SHIELD_MOUNT,4,Mounting Hole,3.2mm,Hole,Mechanical mounting holes for coil fixture
+
