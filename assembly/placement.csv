@@ -1,0 +1,11 @@
+Assembly placement CSV (placeholder)
+
+reference,footprint,x_mm,y_mm,rotation
+U1,STM32F103C8T6-LQFP48,50,20,0
+Q1,QFN-POWER,10,10,0
+Q2,QFN-POWER,15,10,0
+Q3,QFN-POWER,10,15,0
+Q4,QFN-POWER,15,15,0
+J_COIL,JST-PH-2,5,35,0
+
+Note: Exact coordinates will be determined during actual PCB placement. This file will be updated with precise placement after layout.

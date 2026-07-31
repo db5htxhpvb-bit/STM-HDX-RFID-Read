@@ -1,0 +1,16 @@
+(Placeholder) KiCad PCB file - initial board planning notes
+
+File: kicad/STM-HDX-Reader.kicad_pcb
+
+This placeholder represents the PCB file that will be created in KiCad. Key planned layout items:
+
+- Board dimensions: 100 mm x 40 mm
+- Stackup: 4-layer (Top / GND / 12V / Bottom)
+- MOSFET region: placed near JST coil connector at one short edge to minimize high-current loop
+- H-bridge loop area: minimized by placing MOSFETs, gate drivers, and boost inductor close together
+- Thermal vias: 12+ vias under each MOSFET power pad (0.3 mm drill) stitching to inner 12V plane
+- Rshunt placement: Kelvin pads, close to MOSFET return path
+- RX front-end: located on the opposite end of the board, physically separated from the H-bridge
+- Mounting holes: 4x near coil connector for fixture (3.2 mm)
+
+Next: I will create the actual .kicad_pcb with footprints, place components, route power loops and critical signals. This placeholder is committed to track progress.

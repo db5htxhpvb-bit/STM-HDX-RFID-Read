@@ -1,0 +1,12 @@
+# Final BOM (working) - LCSC priority
+
+This CSV is a working BOM that will be expanded with exact LCSC part numbers and links. It lists chosen component roles and target specifications.
+
+ref,qty,part,description,value,footprint,lcsc_pref,notes
+U1,1,STM32F103C8T6,MCU,STM32F103C8T6,LQFP48,yes,
+U2,1,TPS61088 or equivalent,Synchronous boost,12V>=3A,SOT23-6,yes,Choose LCSC stocked part
+Q1..Q4,4,Power MOSFET,Power MOSFET,>=40V,Rds<20mOhm,PowerSO-8,yes,Select LCSC parts with sufficient Id and low Rds(on)
+U_DRV_A,2,Half-bridge driver,Gate driver,High-side/low-side,SOIC-8,yes,
+R_SHUNT,1,0.05R,Current sense resistor,0.05R,2512,yes,3-5W, Kelvin pads
+J_COIL,1,JST-PH-2,Coil connector,PH2.0,2-pin,JST-PH-2,yes,
+
