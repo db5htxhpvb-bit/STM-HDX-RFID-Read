@@ -1,0 +1,22 @@
+Reference,Value,Package,Quantity,Comment
+U1,STM32F103C8T6,LQFP48,1,MCU - LCSC preferred
+U2,TPS61088 or equivalent,SOT-23-6,1,Synchronous boost converter (3.3->12V) - LCSC candidate
+L_BOOST,10uH,1210,1,Power inductor for boost
+C_BOOST,22uF,0805,2,Low ESR output capacitors for boost
+Q1,Power MOSFET (Q1..Q4),PowerSO-8,4,Power MOSFETs - low Rds(on), LCSC candidates
+U_DRV_A,Half-bridge driver,SOIC-8,2,Gate drivers for H-bridge
+R_SHUNT,0.05R,2512,1,Current sense resistor 0.05Ω 3-5W
+U_SENSE,Differential amp/INA,SOIC-8,1,Sense amp for shunt to MCU ADC
+D_ENV,BAT54,SOT-23,2,Envelope detector diodes
+U_RX_OP,LMV358 or OPA2333,SOIC-8,1,Receive preamp op-amp
+U_COMP,LMV7231,SOT-23-5,1,Comparator for envelope
+C_TUNE,10nF,0805,1,Resonance capacitor
+C_TRIM,2-30pF,Trimmer,1,Trimmer cap for fine tune
+J_COIL,JST-PH-2,PH-2,1,Coil connector
+J_SWD,SWD header,2x3 2.54mm,1,SWD programming header
+J_UART,UART header,4-pin 2.54mm,1,UART debug header
+F1,PTC,1206,1,Resettable fuse on VBOOST
+R_GATE,10R,0805,4,Gate resistors
+R_PULL,100k,0805,4,Gate pulldown resistors
+LED1,Green LED,0805,1,Status LED
+SHIELD_MOUNT,Mounting hole,3.2mm,4,Mounting holes near coil

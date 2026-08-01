@@ -1,0 +1,12 @@
+reference,footprint,x_mm,y_mm,rotation
+U1,LQFP-48_7x7mm_P0.8mm,50,20,0
+Q1,PowerSO-8,12,8,0
+Q2,PowerSO-8,17,8,0
+Q3,PowerSO-8,12,18,0
+Q4,PowerSO-8,17,18,0
+J_COIL,JST-PH-2,5,35,0
+U2,SOT-23-6,30,10,0
+L_BOOST,1210,28,12,0
+R_SHUNT,2512,14,22,0
+U_RX_OP,SOIC-8,85,20,0
+U_COMP,SOT-23-5,82,25,0

@@ -1,0 +1,12 @@
+This is a placeholder file representing the gerber archive (to be replaced with real Gerber ZIP once PCB layout is finished).
+
+Contents expected when generated:
+- *.GTL (Top copper)
+- *.GBL (Bottom copper)
+- *.GTS / *.GBS (Solder mask)
+- *.GTO / *.GBO (Silkscreen)
+- *.GML (Mechanical / board outline)
+- *.GT? etc for inner layers (G1, G2)
+- Drill file (*.TXT or *.DRL / Excellon)
+
+Replace this file with the actual gerbers.zip produced by KiCad when the PCB .kicad_pcb is finalized and exported.
