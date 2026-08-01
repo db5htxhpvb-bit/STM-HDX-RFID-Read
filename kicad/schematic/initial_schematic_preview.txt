@@ -1,0 +1,13 @@
+Initial schematic preview (text) - key nets and test points
+
+This is a text preview of important nets and recommended test points to be labeled on the schematic/PCB for debugging.
+
+Test Points (recommended):
+- TP_VCC3V3: near MCU VDD for quick measurement
+- TP_VBOOST: near boost output cap
+- TP_SHUNT_P, TP_SHUNT_N: across current sense resistor
+- TP_HBR_A, TP_HBR_B: H-bridge switch nodes (for oscilloscope)
+- TP_COIL: coil node (after pair connector)
+- TP_RX_OUT: envelope output before comparator
+
+I will include these TP footprints in the KiCad schematic and PCB placement for easy debugging.

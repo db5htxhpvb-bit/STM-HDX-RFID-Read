@@ -1,0 +1,17 @@
+BOM - LCSC candidate parts (working list)
+
+This is a working list of candidate parts; exact LCSC part numbers will be selected by searching LCSC with the given descriptions and footprints.
+
+ref,qty,part_desc,target_specs,footprint,lcsc_notes
+U1,1,STM32F103C8T6,ARM Cortex-M3, LQFP48,LQFP-48_7x7mm_P0.8mm,Search LCSC: STM32F103C8T6 LQFP48
+U2,1,Synchronous boost IC,TPS61088 or equivalent, SOT23-6,SOT-23-6,Search LCSC: TPS61088
+L_BOOST,1,Power inductor,10uH,1210,Search LCSC by inductance and current rating
+Q1..Q4,4,Power MOSFET,>=40V, low Rds(on) <20mOhm, PowerSO-8 or LFPAK,Search LCSC by Vds and Rds(on)
+U_DRV_A,2,Half-bridge driver,bootstrap support,SOIC-8 or SOT-23-6,Search LCSC for half-bridge drivers
+R_SHUNT,1,Current sense resistor,0.05R 3-5W,2512,Search LCSC for 0.05R 3W metal film shunt
+D_ENV,2,BAT54,Schottky diode,SOT-23,Search LCSC for BAT54
+TVS_COIL,1,SMBJ12CA,12V TVS SMA,SMB,Search LCSC for SMBJ12CA
+U_RX_OP,1,LMV358 or OPA2333,Low-noise op-amp,SOIC-8,Search LCSC for LMV358
+U_COMP,1,LMV7231,Comparator,SOT-23-5,Search LCSC for LMV7231
+J_COIL,1,JST-PH-2,Coil connector,PH2.0,Search LCSC for JST PH2-2P
+
