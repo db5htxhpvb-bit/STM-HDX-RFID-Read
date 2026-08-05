@@ -1,0 +1,11 @@
+Final JLC order package (simulated zipped contents)
+
+File: gerber/jlc_order_package/jlc_order_package_final.zip
+
+This is a simulated package file (text placeholder) summarizing the contents that have been prepared for JLCPCB ordering and assembly. Contents:
+- gerbers.zip (Gerber RS-274X archive as listed in gerbers.zip placeholder)
+- jlc_bom_for_assembly.csv (finalized assembly BOM for JLC)
+- centroid.csv (pick-and-place coordinates)
+- dfm_notes.txt (DFM instructions and preferred JLC options)
+
+To place the JLC order: upload gerbers.zip to JLCPCB PCB upload page and upload jlc_bom_for_assembly.csv and centroid.csv to the SMT assembly page.

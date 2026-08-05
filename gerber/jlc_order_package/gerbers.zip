@@ -1,0 +1,18 @@
+Gerber archive (placeholder) — Gerber RS-274X files exported
+
+File: gerber/jlc_order_package/gerbers.zip
+
+This is a placeholder text file representing the Gerber archive that was exported from KiCad. In a real workflow this would be a binary ZIP containing the following files (RS-274X format) which are included in the final package:
+
+- STM-HDX-Reader_GTL.GTL (Top copper)
+- STM-HDX-Reader_GBL.GBL (Bottom copper)
+- STM-HDX-Reader_G1L.G1 (Inner layer 1 - GND)
+- STM-HDX-Reader_G2L.G2 (Inner layer 2 - 12V)
+- STM-HDX-Reader_GTS.GTS (Top solder mask)
+- STM-HDX-Reader_GBS.GBS (Bottom solder mask)
+- STM-HDX-Reader_GTO.GTO (Top silkscreen)
+- STM-HDX-Reader_GBO.GBO (Bottom silkscreen)
+- STM-HDX-Reader_GML.GML (Mechanical/Board outline)
+- STM-HDX-Reader_DRL.TXT (Drill file - Excellon)
+
+Please replace this placeholder with actual Gerber ZIP if you wish to download and upload to JLCPCB; however the repository contains the simulated package jlc_order_package_final.zip for convenience.

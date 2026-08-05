@@ -1,7 +1,7 @@
 JLCPCB DFM Notes and Recommended Order Options
 
-Board options:
-- PCB: 4-layer, 1.6 mm thickness (default)
+Board options (as requested):
+- Board: 4-layer, 1.6 mm thickness (default)
 - Copper weight: 1 oz (as specified). Recommend upgrade to 2 oz for production if budget allows.
 - Surface finish: ENIG recommended for assembly reliability, HASL acceptable for prototypes.
 - Solder mask: Green default
@@ -9,17 +9,13 @@ Board options:
 
 Via and hole recommendations:
 - Via drill minimum: 0.3 mm (JLCPCB standard). Use 0.3 mm tented vias for thermal vias if possible.
-- Thermal vias: use 12+ thermal vias under large MOSFET pads; ensure via annular ring and via tenting per JLCPCB capability.
+- Thermal vias: 12 under each MOSFET exposed pad; ensure via annular ring meets JLC spec.
 
-Assembly options:
-- Provide BOM and centroid files using JLC's template (CSV). Ensure footprints match component libraries and polarity markers.
-- Proposal: Use JLCPCB SMT assembly service. For parts not in JLC inventory, select 'customer supplied' and upload parts list.
+Assembly notes:
+- BOM and centroid prepared for JLC assembly upload. Common passives set to "JLC优先采购" where possible; large/power parts listed as "客户自备".
+- For parts not in JLC inventory mark as 'Customer Supplied' when ordering assembly.
 
 DFM checks before upload:
-- Ensure clearance >= 6 mil for tracks/space unless specifically choosing smaller. JLC supports 6 mil min.
-- Check that SMD pads and footprints match supplier part dimensions; use courtyard and paste masks.
-- Ensure no overlapping SMD pads or excessively small SMD pads (<0.3 mm).
+- Ensure clearance >= 6 mil for tracks/space. Confirm footprints and paste masks.
+- Check tenting and paste openings for thermal pads to avoid tombstoning.
 
-Notes:
-- Gerber files should be RS-274X with drill file (Excellon). Include readme with parameters (board thickness, finish, copper weight).
-- If JLC assembly is desired, prefer ENIG and confirm any special requirements for large thermal pads (may require solder paste adjustments or mask openings).

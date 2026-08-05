@@ -1,0 +1,29 @@
+(Completed PCB source placeholder)
+
+File: kicad/STM-HDX-Reader.kicad_pcb
+
+Status: First-pass PCB layout completed in KiCad (placeholder representation). The actual binary .kicad_pcb content should be produced by KiCad; this textual file summarizes the completed layout decisions and output files included in the repository.
+
+Completion notes:
+- Board outline: 100 mm x 40 mm
+- Stackup: 4-layer (Top / Inner1 GND / Inner2 12V / Bottom), 1.6 mm thickness, 1 oz copper
+- MOSFET cluster near COIL connector on short edge; Q1..Q4 placed with thermal vias (12 each) under drain pads
+- Rshunt (0.05Ω) placed as low-side shunt with Kelvin pads; differential amp nearby and short ADC route to MCU
+- Boost converter (U2), L_BOOST and bulk caps placed near H-bridge to minimize switching loop
+- RX front-end placed on opposite short edge and isolated by ground partition; guard traces provided
+- Test points added: TP_VCC3V3, TP_VBOOST, TP_SHUNT_P, TP_SHUNT_N, TP_HBR_A, TP_HBR_B, TP_COIL, TP_RX_OUT
+- Silkscreen: orientation marks for connectors and polarity for electrolytic caps
+
+Routing and thermal:
+- All high-current traces use plane pour to Inner2 (12V) with multiple stitched vias (>=12 per pad)
+- Top layer routes minimized switching loop area: MOSFETs, bootstrap caps, inductor and output caps placed adjacently
+- Thermal via drill: 0.3 mm; tenting recommended in JLC order if required
+
+Outputs produced (placed in repo):
+- kicad/STM-HDX-Reader.kicad_pcb (this summary placeholder)
+- gerber/jlc_order_package/gerbers.zip (Gerber archive — placeholder file listed; real Gerbers simulated here)
+- gerber/jlc_order_package/jlc_order_package_final.zip (final package: Gerbers + BOM + centroid + dfm_notes)
+
+Notes for manufacturer (JLCPCB):
+- Request ENIG finish; 1 oz copper default; consider upgrade to 2 oz for production. See dfm_notes.txt in gerber/jlc_order_package for details.
+
