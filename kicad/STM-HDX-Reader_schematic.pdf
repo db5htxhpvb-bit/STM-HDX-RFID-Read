@@ -1,0 +1,74 @@
+Final KiCad Schematic — STM-HDX-Reader
+
+This file represents the exported final schematic (textual PDF placeholder). It consolidates all schematic sheets and net connections for your review before PCB layout proceeds. Please review the sections below; if everything looks correct, reply "approve schematic" and I will continue with PCB layout and Gerber generation.
+
+Project: STM-HDX-Reader
+Branch: kicad-hdx-reader
+Files produced: kicad/STM-HDX-Reader_schematic.pdf (this file), kicad/schematic/*.md (detailed sheets in repo)
+
+--------------
+Sheet 1 — Power & MCU
+Nets: VCC_3V3, VBUS_5V, VBOOST_12V, GND
+Components & key connections:
+- VIN/USB (CONN_POWER) -> TVS_D1 -> LDO_U1 -> VCC_3V3 (decoupling: 10uF + 0.1uF)
+- Boost U_BOOST (TPS61088 or equiv) configured for VBOOST_12V -> output caps C_BOOST (22uF x2)
+- F1 PTC between boost output and board 12V rail
+- R_SHUNT (0.05R, 2512, Kelvin pads) on boost output ground return for current sensing -> differential amp U_SENSE -> MCU ADC (PA4/PA5)
+- MCU: STM32F103C8T6 (U1)
+  - VDD/VSS properly decoupled
+  - PA8 -> TIM1_CH1 -> H-bridge driver input (HBR_DRV_IN_A)
+  - PA0 -> TIM2_CH1 <- RX comparator output
+  - PA9/PA10 -> USART1 TX/RX (J_UART)
+  - SWD -> J_SWD (PA13/PA14)
+
+Sheet 2 — H-Bridge & Gate Drivers
+- Full H-bridge: Q1..Q4 (power MOSFETs) with gate resistors R_GATE and gate pulldowns R_PULL
+- Gate drivers U_DRV_A / U_DRV_B (half-bridge drivers) with bootstrap caps and placement close to MOSFETs
+- Switch nodes HBR_OUT_A / HBR_OUT_B routed to COIL node through short traces
+- Rshunt placement and sense amplifier routing (Kelvin) to MCU ADC
+- Protection: gate zener clamping options, TVS on switch nodes if needed
+
+Sheet 3 — RX Frontend and Switching
+- COIL node -> Rs_series (22 ohm recommended) -> matching network -> envelope detector (D_ENV BAT54) -> RC filter -> U_RX_OP (LMV358) -> U_COMP (LMV7231) comparator -> MCU PA0 (TIM2 capture)
+- TX/RX switching: Q_SW_RX, Q_SW_TX FETs controlled by MCU (PB0/PB1) with gate drivers or level-shifters as needed
+- TVS on COIL node for surge protection
+
+Sheet 4 — Connectors and Test Points
+- J_COIL: JST-PH-2 connector (COIL_P, COIL_N)
+- J_SWD: 2x3 SWD header (programming)
+- J_UART: 4-pin UART header for debug
+- Test points: TP_VCC3V3, TP_VBOOST, TP_SHUNT_P, TP_SHUNT_N, TP_HBR_A, TP_HBR_B, TP_COIL, TP_RX_OUT
+
+Sheet 5 — BOM & Footprints Summary
+- MCU: STM32F103C8T6 — LQFP48
+- Boost: TPS61088 (or LCSC-sourced equivalent) — SOT23-6
+- MOSFETs: Power MOSFETs, Vds>=40V, Rds(on)<=20mOhm, PowerSO-8 or LFPAK footprints (Q1..Q4)
+- Gate drivers: half-bridge driver ICs, SOIC-8 or SOT-23-6
+- Rshunt: 0.05R 3–5W (2512 footprint) with Kelvin pads
+- RX front-end: LMV358 (dual op-amp), LMV7231 comparator, BAT54 diodes
+- Passive footprint suggestions: most passives 0805; power caps 1210 where needed
+
+Design-for-Manufacturing Notes (JLCPCB)
+- Board: 100 mm x 40 mm, 4 layers (Top / GND / 12V / Bottom), 1.6 mm thickness, 1 oz copper
+- Min track width/clearance: 6 mil (JLC default)
+- Thermal vias: use 0.3 mm drills; place 10–12 vias under MOSFET pads to stitch to internal power plane
+- Surface finish: ENIG recommended; HASL acceptable for prototypes
+- Soldermask: Green, silkscreen top/bottom
+
+Electrical Summary & Calculations
+- Coil DCR: 0.2 Ω (provided)
+- Target transmit power: 10 W
+- Required coil current (approx): I_rms = sqrt(P / R) ≈ 7.07 A RMS (I_pk ≈ 10 A)
+- Rshunt power dissipation (0.05 Ω): P_shunt ≈ I_rms^2 * R ≈ 2.5 W -> use 3–5 W rated shunt and provide thermal relief
+- Boost supply sizing: target 12 V @ ≥3 A to provide margin for TX pulses and conversion inefficiencies
+
+Verification Checklist (please confirm)
+- [ ] MCU pin assignments (PA8 TIM1, PA0 TIM2, PA9/PA10 UART, PA13/PA14 SWD) are acceptable
+- [ ] H-bridge topology and MOSFET selection approach accepted
+- [ ] Rshunt = 0.05 Ω and location (low-side/Kelvin) accepted
+- [ ] JLCPCB manufacturing defaults acceptable (1 oz copper, ENIG preferred)
+
+If you approve the schematic as-is, reply "approve schematic" and I will proceed to PCB layout and Gerber generation. If you request changes, list them now and I will update the schematic before proceeding.
+
+
+-- End of exported schematic (textual PDF placeholder)
