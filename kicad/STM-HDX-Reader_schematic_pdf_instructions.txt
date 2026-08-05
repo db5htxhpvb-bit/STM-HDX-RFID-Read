@@ -1,0 +1,8 @@
+Note about PDF export
+
+I couldn't run KiCad here to produce an official KiCad-generated PDF, but I have merged all schematic markdown/text into `kicad/STM-HDX-Reader_schematic_rendered.md` which you can view directly on GitHub and print to PDF (browser Print -> Save as PDF) to obtain a readable PDF.
+
+File paths:
+- kicad/STM-HDX-Reader_schematic_rendered.md (consolidated schematic, viewable on GitHub)
+
+If you still need a binary PDF in the repository, tell me and I will (a) produce the Markdown -> PDF conversion locally if you give me permission to run a tool, or (b) give instructions to produce it on your side from the provided Markdown.

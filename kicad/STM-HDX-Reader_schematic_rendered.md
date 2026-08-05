@@ -1,0 +1,104 @@
+# STM-HDX-Reader — Consolidated Schematic (Rendered Markdown)
+
+This file is a consolidated, human-readable rendering of the schematic sheets and design notes so you can view and print them directly from GitHub.
+
+---
+
+## Project summary
+- Project: STM-HDX-Reader
+- Branch: kicad-hdx-reader
+- Purpose: HDX RFID reader board — STM32 MCU, synchronous boost to 12V, H-bridge driver for coil TX, RX envelope detection and comparator, JLCPCB target.
+
+---
+
+## Sheet 1 — Power & MCU
+Nets: VCC_3V3, VBUS_5V, VBOOST_12V, GND
+
+Components & key connections:
+- VIN/USB (CONN_POWER) -> TVS_D1 -> LDO_U1 -> VCC_3V3 (decoupling: 10uF + 0.1uF)
+- Boost U_BOOST (TPS61088 or equiv) configured for VBOOST_12V -> output caps C_BOOST (22uF x2)
+- F1 PTC between boost output and board 12V rail
+- R_SHUNT (0.05R, 2512, Kelvin pads) on boost output ground return for current sensing -> differential amp U_SENSE -> MCU ADC (PA4/PA5)
+- MCU: STM32F103C8T6 (U1)
+  - VDD/VSS properly decoupled
+  - PA8 -> TIM1_CH1 -> H-bridge driver input (HBR_DRV_IN_A)
+  - PA0 -> TIM2_CH1 <- RX comparator output
+  - PA9/PA10 -> USART1 TX/RX (J_UART)
+  - SWD -> J_SWD (PA13/PA14)
+
+Test points:
+- TP_VCC3V3: near MCU VDD
+- TP_VBOOST: near boost output cap
+
+---
+
+## Sheet 2 — H-Bridge & Gate Drivers
+- H-bridge: Q1..Q4 (power MOSFETs) with gate resistors R_GATE and gate pulldowns R_PULL
+- Gate drivers U_DRV_A / U_DRV_B (half-bridge drivers) with bootstrap caps placed close to MOSFETs
+- Switch nodes HBR_OUT_A / HBR_OUT_B routed to COIL node through short traces
+- Rshunt placement and sense amplifier routing (Kelvin) to MCU ADC
+- Protection: gate zener clamping options, TVS on switch nodes if needed
+
+Placement notes:
+- MOSFET cluster near board edge where JST coil connector attaches; thermal vias under drain pads (≥12 vias each)
+- Rshunt placed for low-side measurement with short Kelvin traces to differential amp
+
+---
+
+## Sheet 3 — RX Frontend and TX/RX Switching
+- COIL node -> Rs_series (22 ohm recommended) -> matching network -> envelope detector (D_ENV BAT54) -> RC filter -> U_RX_OP (LMV358) -> U_COMP (LMV7231) comparator -> MCU PA0 (TIM2 capture)
+- TX/RX switching: FET-based RX/TX switch controlled by MCU (PB0/PB1)
+- TVS on COIL node for surge protection
+
+RX placement:
+- RX front-end placed on opposite short edge of the board; guard traces and ground partition to isolate from H-bridge noise
+
+---
+
+## Sheet 4 — Connectors and Test Points
+- J_COIL: JST-PH-2 connector (COIL_P, COIL_N)
+- J_SWD: 2x3 SWD header (programming)
+- J_UART: 4-pin UART header for debug
+- Test points included for quick debugging: TP_SHUNT_P, TP_SHUNT_N, TP_HBR_A, TP_HBR_B, TP_COIL, TP_RX_OUT
+
+---
+
+## Sheet 5 — BOM & Footprints Summary
+Key components & footprints:
+- MCU: STM32F103C8T6 — LQFP48 (LQFP-48_7x7mm_P0.8mm)
+- Boost: TPS61088 (or LCSC-equivalent) — SOT23-6
+- MOSFETs: Power MOSFETs, Vds>=40V, Rds(on)<=20mΩ, PowerSO-8 or LFPAK footprints (Q1..Q4)
+- Gate drivers: Half-bridge driver ICs — SOIC-8 or SOT-23-6
+- Rshunt: 0.05Ω 3–5W (2512) with Kelvin pads
+- RX front-end: LMV358 (dual op-amp), LMV7231 comparator, BAT54 diodes
+- Most SMD passives: 0805; bulk power caps: 1210
+
+---
+
+## DFM / JLCPCB Notes (Summary)
+- Board: 100 mm x 40 mm, 4 layers (Top / GND / 12V / Bottom), 1.6 mm thickness, 1 oz copper
+- Min track width/clearance: 6 mil
+- Thermal vias: 0.3 mm drill, 10–12 per large pad under MOSFETs
+- Surface finish: ENIG recommended; HASL acceptable
+- Provide BOM + centroid to JLC for SMT assembly; mark parts not in JLC inventory as "Customer Supplied"
+
+---
+
+## Electrical Summary & Calculations
+- Coil DCR: 0.2 Ω
+- Target transmit power: 10 W
+- Estimated coil RMS current: ≈7.07 A RMS (I_pk ~10 A)
+- Rshunt dissipation (0.05Ω): P ≈ 2.5 W → use 3–5 W rated shunt
+- Boost sizing: design for 12 V @ ≥ 3 A
+
+---
+
+## How to get a printable PDF locally
+1. Open this rendered Markdown file in GitHub (or clone the repo and open locally).  
+2. Use your browser's Print → Save as PDF option to produce a PDF.  
+
+If you want, I can also (a) split these sections into separate Markdown pages, or (b) create a ZIP with the Markdown plus the existing schematic notes and placeholders for Gerbers.
+
+---
+
+(End of consolidated schematic rendering)
